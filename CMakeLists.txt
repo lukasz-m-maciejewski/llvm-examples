@@ -31,7 +31,7 @@ message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
 #   OUTPUT_STRIP_TRAILING_WHITESPACE)
 
 list(APPEND PROJ_CXX_FLAGS_LIST "-Wall" "-Wextra" "-Werror" "-std=c++14" "-pedantic" "-g")
-list(APPEND PROJ_CXX_FLAGS_LIST "-march=native" "-mtune=generic" "-O2" "-pipe")
+list(APPEND PROJ_CXX_FLAGS_LIST "-march=native" "-mtune=native" "-O2" "-pipe")
 list(APPEND PROJ_CXX_FLAGS_LIST "-fstack-protector-strong" "-fPIC" "-fvisibility-inlines-hidden")
 
 ListToString(PROJ_CXX_FLAGS " " ${PROJ_CXX_FLAGS_LIST})
@@ -55,5 +55,32 @@ message("llvm_libs is: ${llvm_libs}")
 # Link against LLVM libraries
 target_link_libraries(hello-llvm ${llvm_libs})
 
+set(MY_CLANG_LIBS "-Wl,--start-group \
+ -lclangAST \
+ -lclangAnalysis \
+ -lclangBasic \
+ -lclangDriver \
+ -lclangEdit \
+ -lclangFrontend \
+ -lclangFrontendTool \
+ -lclangLex \
+ -lclangParse \
+ -lclangSema \
+ -lclangEdit \
+ -lclangASTMatchers \
+ -lclangRewrite \
+ -lclangRewriteFrontend \
+ -lclangStaticAnalyzerFrontend \
+ -lclangStaticAnalyzerCheckers \
+ -lclangStaticAnalyzerCore \
+ -lclangSerialization \
+ -lclangToolingCore \
+ -lclangTooling \
+ -Wl,--end-group")
+
+message("MY_CLANG_LIBS is: ${MY_CLANG_LIBS}")
+
 # set(MY_LLVM_LIBRARIES "${MY_LLVM_LIBS} ${MY_LLVM_SYSTEM_LIBS}")
 # target_link_libraries(hello-llvm ${MY_LLVM_LIBRARIES})
+
+add_subdirectory(example-libclang)

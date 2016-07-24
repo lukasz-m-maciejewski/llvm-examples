@@ -40,8 +40,8 @@ int main(int argc, char** argv)
                   {
                       if (not fun.isDeclaration())
                       {
-                        O << fun.getName() << " has " << fun.size() << " basic block(s). Is it varArg? "
-                          << fun.isVarArg() << "\n";
+                          O << fun.getName() << " has " << fun.size() << " basic block(s). Is it varArg? "
+                            << fun.isVarArg() << "\n";
                       }
                   });
 
