@@ -27,7 +27,7 @@ int main(int argc, char** argv)
     llvm::ErrorOr<std::unique_ptr<Module>> maybeM = parseBitcodeFile(*mb, context);
     if (not maybeM)
     {
-        std::cerr << "Error reading bitcode"; // << std::end;
+        std::cerr << "Error reading bitcode\n"; // << std::end;
         return -1;
     }
     auto& m = *maybeM;
@@ -40,7 +40,8 @@ int main(int argc, char** argv)
                   {
                       if (not fun.isDeclaration())
                       {
-                          O << fun.getName() << " has " << fun.size() << " basic block(s).\n";
+                        O << fun.getName() << " has " << fun.size() << " basic block(s). Is it varArg? "
+                          << fun.isVarArg() << "\n";
                       }
                   });
 

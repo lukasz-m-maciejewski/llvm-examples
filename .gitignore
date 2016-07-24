@@ -27,3 +27,8 @@
 *.exe
 *.out
 *.app
+
+build/*
+.dir-locals.el
+*.bc
+
