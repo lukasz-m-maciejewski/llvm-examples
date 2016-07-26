@@ -40,7 +40,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${PROJ_CXX_FLAGS}")
 
 include_directories(${LLVM_INCLUDE_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
-message("LLVM_DEFINITIONS is: ${LLVM_DEFINITIONS}")
+# message("LLVM_DEFINITIONS is: ${LLVM_DEFINITIONS}")
 
 
 list(APPEND SOURCE_FILES_LIST hello.cpp)
@@ -50,7 +50,7 @@ add_executable(hello-llvm ${SOURCE_FILES_LIST})
 # Find the libraries that correspond to the LLVM components
 # that we wish to use
 llvm_map_components_to_libnames(llvm_libs bitreader support core)
-message("llvm_libs is: ${llvm_libs}")
+# message("llvm_libs is: ${llvm_libs}")
 
 # Link against LLVM libraries
 target_link_libraries(hello-llvm ${llvm_libs})
@@ -78,7 +78,7 @@ set(MY_CLANG_LIBS "-Wl,--start-group \
  -lclangTooling \
  -Wl,--end-group")
 
-message("MY_CLANG_LIBS is: ${MY_CLANG_LIBS}")
+# message("MY_CLANG_LIBS is: ${MY_CLANG_LIBS}")
 
 # set(MY_LLVM_LIBRARIES "${MY_LLVM_LIBS} ${MY_LLVM_SYSTEM_LIBS}")
 # target_link_libraries(hello-llvm ${MY_LLVM_LIBRARIES})
