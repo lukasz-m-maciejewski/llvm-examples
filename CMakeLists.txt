@@ -84,3 +84,4 @@ set(MY_CLANG_LIBS "-Wl,--start-group \
 # target_link_libraries(hello-llvm ${MY_LLVM_LIBRARIES})
 
 add_subdirectory(example-libclang)
+add_subdirectory(src)
